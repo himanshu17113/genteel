@@ -1,0 +1,17 @@
+import 'package:flutter/material.dart';import 'package:genteel/core/app_export.dart';import 'package:genteel/widgets/app_bar/appbar_leading_image.dart';import 'package:genteel/widgets/app_bar/appbar_subtitle.dart';import 'package:genteel/widgets/app_bar/appbar_trailing_iconbutton.dart';import 'package:genteel/widgets/app_bar/custom_app_bar.dart';import 'package:genteel/widgets/custom_bottom_bar.dart';import 'package:genteel/widgets/custom_elevated_button.dart';
+// ignore_for_file: must_be_immutable
+class NotificationsScreen extends StatelessWidget {NotificationsScreen({Key? key}) : super(key: key);
+
+GlobalKey<NavigatorState> navigatorKey = GlobalKey();
+
+@override Widget build(BuildContext context) { return SafeArea(child: Scaffold(appBar: _buildAppBar(context), body: SizedBox(width: double.maxFinite, child: Column(children: [SizedBox(height: 14.v), _buildItem(context), Spacer()])), bottomNavigationBar: _buildBottomBar(context))); } 
+/// Section Widget
+PreferredSizeWidget _buildAppBar(BuildContext context) { return CustomAppBar(leadingWidth: 44.h, leading: AppbarLeadingImage(imagePath: ImageConstant.imgArrowLeft, margin: EdgeInsets.only(left: 20.h, top: 16.v, bottom: 16.v), onTap: () {onTapArrowLeft(context);}), centerTitle: true, title: AppbarSubtitle(text: "Notifications"), actions: [AppbarTrailingIconbutton(imagePath: ImageConstant.imgSolarSettingsLinear, margin: EdgeInsets.symmetric(horizontal: 20.h, vertical: 10.v))]); } 
+/// Section Widget
+Widget _buildItem(BuildContext context) { return Container(margin: EdgeInsets.symmetric(horizontal: 20.h), padding: EdgeInsets.symmetric(horizontal: 14.h, vertical: 10.v), decoration: AppDecoration.outlineOnErrorContainer.copyWith(borderRadius: BorderRadiusStyle.roundedBorder2), child: Row(mainAxisAlignment: MainAxisAlignment.center, mainAxisSize: MainAxisSize.min, children: [CustomImageView(imagePath: ImageConstant.imgImage, height: 85.v, width: 75.h, radius: BorderRadius.circular(2.h), margin: EdgeInsets.symmetric(vertical: 2.v)), Expanded(child: Padding(padding: EdgeInsets.only(left: 13.h), child: Column(children: [Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Text("Discount".toUpperCase(), style: CustomTextStyles.labelMediumGreenA400), Text("Yesterday".toUpperCase(), style: theme.textTheme.labelMedium)]), SizedBox(height: 9.v), Container(width: 212.h, margin: EdgeInsets.only(right: 5.h), child: Text("This Gucci perfume you viewed yesterday went on sale at 20% off", maxLines: 2, overflow: TextOverflow.ellipsis, style: CustomTextStyles.bodySmallNunitoBluegray90001.copyWith(height: 1.50))), SizedBox(height: 6.v), Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [Padding(padding: EdgeInsets.only(top: 4.v, bottom: 2.v), child: RichText(text: TextSpan(children: [TextSpan(text: "350", style: CustomTextStyles.labelLargeLoraffa3a7a7.copyWith(decoration: TextDecoration.lineThrough)), TextSpan(text: " "), TextSpan(text: "330", style: CustomTextStyles.titleSmallffff4b9d)]), textAlign: TextAlign.left)), CustomElevatedButton(height: 28.v, width: 60.h, text: "Visit", buttonTextStyle: CustomTextStyles.titleSmallNunitoBlack900)])])))])); } 
+/// Section Widget
+Widget _buildBottomBar(BuildContext context) { return CustomBottomBar(onChanged: (BottomBarEnum type) {}); } 
+
+/// Navigates back to the previous screen.
+onTapArrowLeft(BuildContext context) { Navigator.pop(context); } 
+ }
