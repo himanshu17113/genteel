@@ -11,34 +11,73 @@ class ChooseListScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //  List<String>
+    Map<String, bool> reasons = {
+      'Browse a curated shop': false,
+      'Get seasonal looks': false,
+      'A fun surprise': false,
+      'Having an Al help me shop': false,
+      'Inspiration': false,
+      'Unique pieces': false,
+      'Hopeful': false,
+      'Transform my style': false,
+      'Do my shopping for me': false,
+    };
     return SafeArea(
       child: Scaffold(
-        body: Container(
-          width: double.maxFinite,
-          padding: EdgeInsets.symmetric(
-            horizontal: 20.h,
-            vertical: 34.v,
-          ),
+        
+        body: Padding(
+       
+        padding: EdgeInsets.symmetric(horizontal: 10,vertical: 35),
           child: Column(
             children: [
-              Container(
-                width: 321.h,
-                margin: EdgeInsets.only(
-                  left: 6.h,
-                  right: 7.h,
-                ),
-                child: Text(
-                  "First, what are the reasons you’re excited to try Genteel.",
-                  maxLines: 2,
-                  overflow: TextOverflow.ellipsis,
-                  textAlign: TextAlign.center,
-                  style: theme.textTheme.headlineSmall!.copyWith(
-                    height: 1.20,
-                  ),
+              Text(
+                "First, what are the reasons you’re excited to try Genteel.",
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                textAlign: TextAlign.center,
+                style: theme.textTheme.headlineSmall!.copyWith(
+                  height: 1.20,
                 ),
               ),
               SizedBox(height: 27.v),
-              _buildChooseListChipView(context),
+              StatefulBuilder(
+                builder: (BuildContext context, setState) => Wrap(
+                    runSpacing: 11,
+                    spacing: 11,
+                    children: List.generate(
+                      reasons.length,
+                      (index) => RawChip(
+                          padding: EdgeInsets.symmetric(
+                            horizontal: 17,
+                            vertical: 9,
+                          ),
+                          showCheckmark: false,
+                          labelPadding: EdgeInsets.zero,
+                          label: Text(
+                            reasons.keys.elementAt(index),
+                            style: TextStyle(
+                              color: reasons.values.elementAt(index) ? Colors.white : Colors.black,
+                              fontSize: 13,
+                              fontFamily: 'Nunito',
+                              fontWeight: FontWeight.w700,
+                            ),
+                          ),
+                          selected: reasons.values.elementAt(index),
+                          backgroundColor: Colors.white,
+                          selectedColor: appTheme.greenA400,
+                          shape: RoundedRectangleBorder(
+                            side: BorderSide(
+                              color: reasons.values.elementAt(index) ? appTheme.greenA400 : appTheme.gray700,
+                              width: 1.h,
+                            ),
+                            borderRadius: BorderRadius.circular(
+                              18.h,
+                            ),
+                          ),
+                          onSelected: (value) => setState(() => reasons[reasons.keys.elementAt(index)] = value)),
+                    )),
+              ),
               SizedBox(height: 5.v),
             ],
           ),
@@ -49,23 +88,16 @@ class ChooseListScreen extends StatelessWidget {
   }
 
   /// Section Widget
-  Widget _buildChooseListChipView(BuildContext context) {
-    return Wrap(
-      runSpacing: 11.v,
-      spacing: 11.h,
-      children:
-          List<Widget>.generate(9, (index) => ChooselistchipviewItemWidget()),
-    );
-  }
 
   /// Section Widget
   Widget _buildNextButton(BuildContext context) {
     return CustomElevatedButton(
       text: "Next",
+      onPressed: () => Navigator.popAndPushNamed(context, AppRoutes.chooseListOneScreen),
       margin: EdgeInsets.only(
-        left: 20.h,
-        right: 20.h,
-        bottom: 68.v,
+        left: 20,
+        right: 20,
+        bottom: 68,
       ),
     );
   }

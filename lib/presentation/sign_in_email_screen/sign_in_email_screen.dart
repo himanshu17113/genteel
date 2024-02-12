@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:genteel/core/app_export.dart';
 import 'package:genteel/widgets/custom_elevated_button.dart';
@@ -70,7 +71,7 @@ class SignInEmailScreen extends StatelessWidget {
                     textInputType: TextInputType.emailAddress,
                     borderDecoration: TextFormFieldStyleHelper.underLineGray,
                   ),
-                  SizedBox(height: 33),
+                  const SizedBox(height: 33),
                   CustomTextFormField(
                     controller: passwordController,
                     hintText: "Enter Your Password",
@@ -79,7 +80,7 @@ class SignInEmailScreen extends StatelessWidget {
                     obscureText: true,
                     borderDecoration: TextFormFieldStyleHelper.underLineGray,
                   ),
-                  SizedBox(height: 17),
+                  const SizedBox(height: 17),
                   Align(
                     alignment: Alignment.centerRight,
                     child: GestureDetector(
@@ -90,8 +91,10 @@ class SignInEmailScreen extends StatelessWidget {
                       ),
                     ),
                   ),
-                  SizedBox(height: 31),
+                  const SizedBox(height: 31),
                   CustomElevatedButton(
+                    onPressed: () =>
+                        Navigator.pushNamedAndRemoveUntil(context, AppRoutes.bottomNavigationScreen, ((route) => false)),
                     text: "Sign in",
                   ),
                   Spacer(
@@ -105,9 +108,11 @@ class SignInEmailScreen extends StatelessWidget {
                           style: CustomTextStyles.bodyLargeNunitofff7f7f7,
                         ),
                         TextSpan(
-                          text: " ",
+                          text: "    ",
                         ),
                         TextSpan(
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () => Navigator.pushReplacementNamed(context, AppRoutes.signUpFormScreen),
                           text: "Sign up",
                           style: CustomTextStyles.titleMediumNunitoff77f208,
                         ),

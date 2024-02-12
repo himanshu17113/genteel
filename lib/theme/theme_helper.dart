@@ -1,4 +1,4 @@
- import 'package:flutter/material.dart';
+import 'package:flutter/material.dart';
 import '../../core/app_export.dart';
 
 String _appTheme = "primary";
@@ -6,14 +6,10 @@ String _appTheme = "primary";
 /// Helper class for managing themes and colors.
 class ThemeHelper {
   // A map of custom color themes supported by the app
-  Map<String, PrimaryColors> _supportedCustomColor = {
-    'primary': PrimaryColors()
-  };
+  Map<String, PrimaryColors> _supportedCustomColor = {'primary': PrimaryColors()};
 
 // A map of color schemes supported by the app
-  Map<String, ColorScheme> _supportedColorScheme = {
-    'primary': ColorSchemes.primaryColorScheme
-  };
+  Map<String, ColorScheme> _supportedColorScheme = {'primary': ColorSchemes.primaryColorScheme};
 
   /// Changes the app theme to [_newTheme].
   void changeTheme(String _newTheme) {
@@ -41,18 +37,20 @@ class ThemeHelper {
     }
     //return theme from map
 
-    var colorScheme =
-        _supportedColorScheme[_appTheme] ?? ColorSchemes.primaryColorScheme;
+    var colorScheme = _supportedColorScheme[_appTheme] ?? ColorSchemes.primaryColorScheme;
     return ThemeData(
+      appBarTheme: AppBarTheme(backgroundColor: Colors.white),
       visualDensity: VisualDensity.standard,
       colorScheme: colorScheme,
       textTheme: TextThemes.textTheme(colorScheme),
-      scaffoldBackgroundColor: colorScheme.onPrimaryContainer.withOpacity(1),
+      scaffoldBackgroundColor: colorScheme.surface,
+      menuTheme: const MenuThemeData(style: MenuStyle(padding: MaterialStatePropertyAll(EdgeInsets.zero))),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
+          //shadowColor: Colors.amber,
           backgroundColor: colorScheme.primary,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(4.h),
+            borderRadius: BorderRadius.circular(4),
           ),
           visualDensity: const VisualDensity(
             vertical: -4,
@@ -61,6 +59,18 @@ class ThemeHelper {
           padding: EdgeInsets.zero,
         ),
       ),
+      textButtonTheme: TextButtonThemeData(
+          style: TextButton.styleFrom(
+        backgroundColor: colorScheme.primary,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(4),
+        ),
+        visualDensity: const VisualDensity(
+          vertical: -4,
+          horizontal: -4,
+        ),
+        padding: EdgeInsets.zero,
+      )),
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
           backgroundColor: Colors.transparent,

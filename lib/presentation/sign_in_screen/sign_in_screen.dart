@@ -1,3 +1,4 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:genteel/core/app_export.dart';
@@ -65,9 +66,11 @@ class SignInScreen extends StatelessWidget {
                           style: CustomTextStyles.bodyLargeNunitofff7f7f7,
                         ),
                         TextSpan(
-                          text: " ",
+                          text: "  ",
                         ),
                         TextSpan(
+                          recognizer: TapGestureRecognizer()
+                            ..onTap = () => Navigator.pushNamed(context, AppRoutes.signUpFormScreen),
                           text: "Sign up",
                           style: CustomTextStyles.titleMediumNunitoff77f208,
                         ),
@@ -181,8 +184,8 @@ class SignInScreen extends StatelessWidget {
         margin: EdgeInsets.only(right: 30.h),
         child: SvgPicture.asset(
           ImageConstant.imgEmail2,
-          height: 16.v,
-          width: 24.h,
+          height: 16,
+          width: 24,
         ),
       ),
       buttonStyle: CustomButtonStyles.fillOnPrimaryContainer,

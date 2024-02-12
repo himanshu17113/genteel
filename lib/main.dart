@@ -11,7 +11,7 @@ void main() {
 
   ///Please update theme as per your need if required.
   ThemeHelper().changeTheme('primary');
-  runApp(App());
+  runApp(const App());
 }
 
 class App extends StatelessWidget {

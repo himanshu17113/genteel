@@ -3,7 +3,7 @@ import 'package:genteel/core/app_export.dart';
 import 'package:genteel/widgets/base_button.dart';
 
 class CustomElevatedButton extends BaseButton {
- const CustomElevatedButton({
+  const CustomElevatedButton({
     Key? key,
     this.decoration,
     this.leftIcon,
@@ -46,11 +46,11 @@ class CustomElevatedButton extends BaseButton {
   }
 
   Widget get buildElevatedButtonWidget => Container(
-        height: this.height ?? 50.v,
+        height: this.height ?? 50,
         width: this.width ?? double.maxFinite,
         margin: margin,
         decoration: decoration,
-        child: ElevatedButton(
+        child: TextButton(
           style: buttonStyle,
           onPressed: isDisabled ?? false ? null : onPressed ?? () {},
           child: Row(
@@ -60,8 +60,7 @@ class CustomElevatedButton extends BaseButton {
               leftIcon ?? const SizedBox.shrink(),
               Text(
                 text,
-                style: buttonTextStyle ??
-                    CustomTextStyles.titleMediumNunitoBlack900SemiBold,
+                style: buttonTextStyle ?? CustomTextStyles.titleMediumNunitoBlack900SemiBold,
               ),
               rightIcon ?? const SizedBox.shrink(),
             ],

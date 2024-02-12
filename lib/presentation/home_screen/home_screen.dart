@@ -20,7 +20,7 @@ class HomeScreen extends StatefulWidget {
 class HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   TextEditingController searchController = TextEditingController();
   final List<DropdownMenuEntry<String>> iconEntries = <DropdownMenuEntry<String>>[
-    DropdownMenuEntry<String>(label: 'WOMEN', value: 'WOMEN')
+    DropdownMenuEntry<String>(label: 'WOMEN', value: 'WOMENkkkk')
   ];
   late TabController tabviewController;
 
@@ -34,47 +34,55 @@ class HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
   Widget build(BuildContext context) {
     return CustomScrollView(slivers: <Widget>[
       SliverAppBar(
+        surfaceTintColor: Colors.white,
+        foregroundColor: Colors.white,
+        backgroundColor: Colors.white,
         leadingWidth: 0,
         actions: [
           IconButton(onPressed: () {}, icon: const Icon(Icons.notifications_none_rounded)),
           IconButton(onPressed: () {}, icon: Icon(Icons.favorite_border_outlined))
         ],
         leading: const SizedBox.shrink(),
-        //     backgroundColor: const Color.fromARGB(240, 0, 0, 0),
         floating: true,
         pinned: true,
         snap: false,
         centerTitle: false,
-        title: DropdownMenu<String>(
-          initialSelection: iconEntries.first.label,
-          //  controller: iconController,
-          dropdownMenuEntries: iconEntries,
-          onSelected: (icon) {
-            setState(() {
-              //    selectedIcon = icon;
-            });
-          },
+        title: SizedBox(
+          child: DropdownMenu<String>(
+            label: null,
+            selectedTrailingIcon: Icon(Icons.keyboard_arrow_up_rounded),
+            inputDecorationTheme: InputDecorationTheme(
+                border: InputBorder.none,
+                contentPadding: EdgeInsets.only(
+                  left: 10,
+                ),
+                isDense: true),
+            trailingIcon: Icon(Icons.keyboard_arrow_down_outlined),
+            initialSelection: iconEntries.first.label,
+            dropdownMenuEntries: iconEntries,
+            onSelected: (icon) {
+              setState(() {});
+            },
+          ),
         ),
         bottom: AppBar(
-          toolbarHeight: 100,
+          surfaceTintColor: Colors.white,
+          backgroundColor: Colors.white,
+          //    toolbarHeight: 100,
           leadingWidth: 0,
           leading: const SizedBox.shrink(),
-          // forceMaterialTransparency: true,
-          //   backgroundColor: const Color.fromARGB(255, 0, 0, 0),
           title: SizedBox(
             width: double.infinity,
-            height: 98,
-            //  color: const Color.fromARGB(240, 0, 0, 0),
+            //   height: 98,
             child: TextField(
                 controller: searchController,
-                //    style: inputtextStyle,
                 decoration: InputDecoration(
                     suffixIconConstraints: const BoxConstraints(minWidth: 80, maxHeight: 40, maxWidth: 100, minHeight: 40),
                     helperStyle: CustomTextStyles.bodyMediumGray700,
                     hintStyle: CustomTextStyles.bodyMediumGray700,
                     filled: true,
                     fillColor: appTheme.gray100,
-                    hintText:  "Let’s shop for anything..",
+                    hintText: "Let’s shop for anything..",
                     prefixIcon: const Icon(Icons.search),
                     suffixIcon: Row(
                       children: [],
@@ -87,20 +95,8 @@ class HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
       SliverList(
         delegate: SliverChildListDelegate(
           [
-            Align(
-              alignment: Alignment.center,
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.h),
-                child: CustomSearchView(
-                  controller: searchController,
-                  hintText: "Let’s shop for anything..",
-                  alignment: Alignment.center,
-                ),
-              ),
-            ),
-            SizedBox(height: 24.v),
             Padding(
-              padding: EdgeInsets.only(left: 20.h),
+              padding: EdgeInsets.only(left: 20, top: 10),
               child: Text(
                 "TRENDING NOW",
                 style: theme.textTheme.titleLarge,
@@ -154,13 +150,7 @@ class HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
               height: 1349.v,
               child: TabBarView(
                 controller: tabviewController,
-                children: [
-                  // HomeScreen(),
-                  // HomeScreen(),
-                  // HomeScreen(),
-                  // HomeScreen(),
-                  // HomeScreen(),
-                ],
+                children: [],
               ),
             ),
           ],
@@ -169,9 +159,6 @@ class HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     ]);
   }
 
-  /// Section Widget
-
-  /// Section Widget
   Widget _buildCrystalComponent(BuildContext context) {
     return Align(
       alignment: Alignment.center,
@@ -197,7 +184,6 @@ class HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     );
   }
 
-  /// Section Widget
   Widget _buildGemGlowComponent(BuildContext context) {
     return Align(
       alignment: Alignment.center,
@@ -223,7 +209,6 @@ class HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     );
   }
 
-  /// Section Widget
   Widget _buildTabview(BuildContext context) {
     return Container(
       height: 29.v,

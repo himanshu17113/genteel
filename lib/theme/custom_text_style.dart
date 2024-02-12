@@ -54,7 +54,7 @@ class CustomTextStyles {
       theme.textTheme.bodyLarge!.nunito.copyWith(
         color: appTheme.gray700,
       );
-  static get bodyLargeNunitoLightgreenA200e5 =>
+  static  get bodyLargeNunitoLightgreenA200e5 =>
       theme.textTheme.bodyLarge!.nunito.copyWith(
         color: appTheme.lightGreenA200E5,
       );
