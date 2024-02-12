@@ -1,11 +1,9 @@
-import 'package:flutter/widgets.dart';
+import 'package:flutter/cupertino.dart';
 
 import 'widgets/crystalcomponent_item_widget.dart';
 import 'widgets/gemglowcomponent_item_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:genteel/core/app_export.dart';
-
-import 'package:genteel/widgets/custom_search_view.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key})
@@ -35,35 +33,42 @@ class HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     return CustomScrollView(slivers: <Widget>[
       SliverAppBar(
         surfaceTintColor: Colors.white,
-        foregroundColor: Colors.white,
-        backgroundColor: Colors.white,
+        // foregroundColor: Colors.white,
+        //backgroundColor: Colors.white,
         leadingWidth: 0,
         actions: [
           IconButton(onPressed: () {}, icon: const Icon(Icons.notifications_none_rounded)),
-          IconButton(onPressed: () {}, icon: Icon(Icons.favorite_border_outlined))
+          IconButton(onPressed: () {}, icon: const Icon(Icons.favorite_border_outlined))
         ],
         leading: const SizedBox.shrink(),
         floating: true,
         pinned: true,
         snap: false,
         centerTitle: false,
-        title: SizedBox(
-          child: DropdownMenu<String>(
-            label: null,
-            selectedTrailingIcon: Icon(Icons.keyboard_arrow_up_rounded),
-            inputDecorationTheme: InputDecorationTheme(
-                border: InputBorder.none,
-                contentPadding: EdgeInsets.only(
-                  left: 10,
-                ),
-                isDense: true),
-            trailingIcon: Icon(Icons.keyboard_arrow_down_outlined),
-            initialSelection: iconEntries.first.label,
-            dropdownMenuEntries: iconEntries,
-            onSelected: (icon) {
-              setState(() {});
-            },
+        title: DropdownMenu<String>(
+          //expandedInsets: EdgeInsets.zero,
+          label: null,
+          textStyle: theme.textTheme.titleLarge,
+          selectedTrailingIcon: Icon(
+            Icons.keyboard_arrow_up_rounded,
+            size: 28,
           ),
+          inputDecorationTheme: InputDecorationTheme(
+              border: InputBorder.none,
+              contentPadding: EdgeInsets.only(
+                left: 10,
+              ),
+              isDense: true),
+          trailingIcon: Icon(
+            Icons.keyboard_arrow_down_outlined,
+            size: 28,
+            weight: 0.5,
+          ),
+          initialSelection: iconEntries.first.value,
+          dropdownMenuEntries: iconEntries,
+          onSelected: (icon) {
+            setState(() {});
+          },
         ),
         bottom: AppBar(
           surfaceTintColor: Colors.white,
@@ -85,7 +90,20 @@ class HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
                     hintText: "Let’s shop for anything..",
                     prefixIcon: const Icon(Icons.search),
                     suffixIcon: Row(
-                      children: [],
+                      children: [
+                        IconButton(onPressed: () {}, icon: const Icon(CupertinoIcons.camera)),
+                        IconButton(
+                            onPressed: () {},
+                            icon: const Icon(
+                              Icons.mic_none_rounded,
+                              weight: 200,
+                              grade: 0.1,
+                              applyTextScaling: true,
+                              opticalSize: 0.1,
+                              fill: 0.1,
+                              size: 28,
+                            ))
+                      ],
                     ),
                     contentPadding: const EdgeInsets.symmetric(vertical: 5, horizontal: 4),
                     border: OutlineInputBorder(borderSide: BorderSide.none, borderRadius: BorderRadius.circular(10)))),
@@ -96,17 +114,15 @@ class HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
         delegate: SliverChildListDelegate(
           [
             Padding(
-              padding: EdgeInsets.only(left: 20, top: 10),
+              padding: EdgeInsets.only(left: 20, top: 10, bottom: 15),
               child: Text(
                 "TRENDING NOW",
                 style: theme.textTheme.titleLarge,
               ),
             ),
-            SizedBox(height: 15.v),
             _buildCrystalComponent(context),
-            SizedBox(height: 21.v),
             Padding(
-              padding: EdgeInsets.only(left: 20.h),
+              padding: EdgeInsets.only(left: 20, top: 15),
               child: Text(
                 "RECOMMENDED",
                 style: theme.textTheme.titleLarge,
@@ -138,21 +154,21 @@ class HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
             _buildGemGlowComponent(context),
             SizedBox(height: 24.v),
             Padding(
-              padding: EdgeInsets.only(left: 24.h),
+              padding: EdgeInsets.only(left: 24),
               child: Text(
                 "Categories",
                 style: CustomTextStyles.titleLarge_1,
               ),
             ),
-            SizedBox(height: 16.v),
-            _buildTabview(context),
-            SizedBox(
-              height: 1349.v,
-              child: TabBarView(
-                controller: tabviewController,
-                children: [],
-              ),
-            ),
+            SizedBox(height: 16),
+            // _buildTabview(context),
+            // SizedBox(
+            //   height: 1349.v,
+            //   child: TabBarView(
+            //     controller: tabviewController,
+            //     children: [],
+            //   ),
+            // ),
           ],
         ),
       ),
@@ -163,19 +179,10 @@ class HomeScreenState extends State<HomeScreen> with TickerProviderStateMixin {
     return Align(
       alignment: Alignment.center,
       child: SizedBox(
-        height: 284.v,
-        child: ListView.separated(
-          padding: EdgeInsets.symmetric(horizontal: 19.h),
+        height: (SizeUtils.width * .5 + 54) * 1.25,
+        child: ListView.builder(
           scrollDirection: Axis.horizontal,
-          separatorBuilder: (
-            context,
-            index,
-          ) {
-            return SizedBox(
-              width: 14.h,
-            );
-          },
-          itemCount: 2,
+          itemCount: 5,
           itemBuilder: (context, index) {
             return CrystalcomponentItemWidget();
           },

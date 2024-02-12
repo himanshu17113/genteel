@@ -20,7 +20,7 @@ class OnboardingScreen extends StatelessWidget {
       extendBody: true,
       extendBodyBehindAppBar: true,
       body: PageView(
-        padEnds: false,
+        padEnds: true,
         controller: controller,
         children: [
           DecoratedBox(

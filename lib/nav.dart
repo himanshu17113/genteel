@@ -1,9 +1,12 @@
-import 'package:flutter/cupertino.dart';
-import 'package:flutter/widgets.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutter/material.dart';
 import 'package:genteel/core/utils/image_constant.dart';
+import 'package:genteel/presentation/ai_search_screen/ai_search_screen.dart';
+
+import 'package:genteel/presentation/catalog_page/catalog_page.dart';
 import 'package:genteel/presentation/home_screen/home_screen.dart';
+import 'package:genteel/presentation/my_bag_screen/my_bag_screen.dart';
+import 'package:genteel/presentation/profile_overview_tab_container_screen/profile_overview_tab_container_screen.dart';
 
 class Nav extends StatefulWidget {
   const Nav({super.key});
@@ -14,11 +17,11 @@ class Nav extends StatefulWidget {
 
 class _NavState extends State<Nav> {
   int selectedIndex = 0;
-  final List screens = [HomeScreen()];
+  static const List screens = [HomeScreen(), CatalogPage(), AiSearchScreen(), MyBagScreen(), ProfileOverviewTabContainerScreen()];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: screens[0],
+      body: screens[selectedIndex],
       bottomNavigationBar: BottomNavigationBar(
         showSelectedLabels: false,
         //type: BottomNavigationBarType.shifting,

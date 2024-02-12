@@ -16,20 +16,31 @@ class CatalogPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: _buildAppBar(context),
+        appBar: AppBar(
+          title: Text(
+            'CATALOG',
+            style: theme.textTheme.headlineSmall!.copyWith(
+              color: appTheme.black900,
+            ),
+          ),
+          actions: [
+            IconButton(onPressed: () {}, icon: const Icon(Icons.notifications_none_rounded)),
+            IconButton(onPressed: () {}, icon: const Icon(Icons.favorite_border_outlined))
+          ],
+        ),
         body: Padding(
           padding: EdgeInsets.only(
-            left: 20.h,
-            top: 10.v,
-            right: 20.h,
+            left: 20,
+            top: 10,
+            right: 20,
           ),
           child: GridView.builder(
             shrinkWrap: true,
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              mainAxisExtent: 234.v,
+              mainAxisExtent: 250,
               crossAxisCount: 2,
-              mainAxisSpacing: 15.h,
-              crossAxisSpacing: 15.h,
+              mainAxisSpacing: 25,
+              crossAxisSpacing: 15,
             ),
             physics: BouncingScrollPhysics(),
             itemCount: 10,

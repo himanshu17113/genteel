@@ -1,4 +1,8 @@
+import 'dart:math';
+
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:genteel/core/app_export.dart';
 
 // ignore: must_be_immutable
@@ -10,44 +14,33 @@ class CrystalcomponentItemWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return SizedBox(
-      width: 160.h,
-      child: Align(
-        alignment: Alignment.center,
+    return Padding(
+      padding: EdgeInsets.only(
+        left: 10,
+      ),
+      child: SizedBox(
+        width: SizeUtils.width * .5 - 15,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
-              height: 200.v,
-              width: 160.h,
-              child: Stack(
-                alignment: Alignment.topRight,
-                children: [
-                  CustomImageView(
-                    imagePath: ImageConstant.imgRectangle15200x160,
-                    height: 200.v,
-                    width: 160.h,
-                    radius: BorderRadius.circular(
-                      2.h,
-                    ),
-                    alignment: Alignment.center,
-                  ),
-                  CustomImageView(
-                    imagePath: ImageConstant.imgFavorite,
-                    height: 16.adaptSize,
-                    width: 16.adaptSize,
-                    alignment: Alignment.topRight,
-                    margin: EdgeInsets.only(
-                      top: 10.v,
-                      right: 15.h,
-                    ),
-                  ),
-                ],
+            Container(
+              height: (SizeUtils.width * .5 - 15) * 1.25,
+              alignment: Alignment.topRight,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(6),
+                  image: DecorationImage(
+                      image: AssetImage(
+                        ImageConstant.imgRectangle15200x160,
+                      ),
+                      fit: BoxFit.fill,
+                      alignment: Alignment.center)),
+              child: IconButton(
+                icon: Icon(Icons.favorite_outline_rounded,color: Color(0XFFFF4B9D),),
+                onPressed: () {},
               ),
             ),
-            SizedBox(height: 12.v),
-            SizedBox(
-              width: 142.h,
+            Padding(
+              padding: EdgeInsets.only(left: 5),
               child: Text(
                 "Crystal Cascade by Joe Waterman",
                 maxLines: 2,
@@ -57,9 +50,12 @@ class CrystalcomponentItemWidget extends StatelessWidget {
                 ),
               ),
             ),
-            Text(
-              "20 products",
-              style: CustomTextStyles.bodyMediumBluegray400,
+            Padding(
+              padding: EdgeInsets.only(left: 3),
+              child: Text(
+                "20 products",
+                style: CustomTextStyles.bodyMediumBluegray400,
+              ),
             ),
           ],
         ),

@@ -7,12 +7,12 @@ import 'package:genteel/core/app_export.dart';
 import 'package:genteel/widgets/custom_bottom_bar.dart';
 
 class AiSearchScreen extends StatelessWidget {
-  AiSearchScreen({Key? key})
+  const AiSearchScreen({Key? key})
       : super(
           key: key,
         );
 
-  GlobalKey<NavigatorState> navigatorKey = GlobalKey();
+  // GlobalKey<NavigatorState> navigatorKey = GlobalKey();
 
   @override
   Widget build(BuildContext context) {
@@ -32,16 +32,13 @@ class AiSearchScreen extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 14.v),
-                SizedBox(
-                  width: 176.h,
-                  child: Text(
-                    "Welcome to \nAI Search",
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    textAlign: TextAlign.center,
-                    style: CustomTextStyles.headlineLargeBlack900.copyWith(
-                      height: 1.20,
-                    ),
+                Text(
+                  "Welcome to \nAI Search",
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                  textAlign: TextAlign.center,
+                  style: CustomTextStyles.headlineLargeBlack900.copyWith(
+                    height: 1.20,
                   ),
                 ),
                 SizedBox(height: 28.v),
@@ -126,7 +123,7 @@ class AiSearchScreen extends StatelessWidget {
             ),
           ),
         ),
-        bottomNavigationBar: _buildBottomBarSection(context),
+        //    bottomNavigationBar: _buildBottomBarSection(context),
       ),
     );
   }

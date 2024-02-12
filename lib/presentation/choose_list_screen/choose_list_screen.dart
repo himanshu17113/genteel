@@ -1,4 +1,3 @@
-import '../choose_list_screen/widgets/chooselistchipview_item_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:genteel/core/app_export.dart';
 import 'package:genteel/widgets/custom_elevated_button.dart';
