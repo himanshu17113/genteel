@@ -26,7 +26,7 @@ packages:
     source: hosted
     version: "2.1.1"
   cached_network_image:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: cached_network_image
       sha256: "28ea9690a8207179c319965c13cd8df184d5ee721ae2ce60f398ced1219cea1f"
@@ -50,7 +50,7 @@ packages:
     source: hosted
     version: "1.1.1"
   carousel_slider:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: carousel_slider
       sha256: "9c695cc963bf1d04a47bd6021f68befce8970bcd61d24938e1fb0918cf5d9c42"
@@ -143,7 +143,7 @@ packages:
     source: hosted
     version: "3.3.1"
   flutter_svg:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: flutter_svg
       sha256: d39e7f95621fc84376bc0f7d504f05c3a41488c562f4a8ad410569127507402c
@@ -172,13 +172,13 @@ packages:
     source: hosted
     version: "4.0.2"
   intl:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: intl
-      sha256: "3bc132a9dbce73a7e4a21a17d06e1878839ffbf975568bc875c60537824b0c4d"
+      sha256: d6f56758b7d3014a48af9701c085700aac781a92a87a62b1333b46d8879661cf
       url: "https://pub.dev"
     source: hosted
-    version: "0.18.1"
+    version: "0.19.0"
   leak_tracker:
     dependency: transitive
     description:
@@ -308,7 +308,7 @@ packages:
     source: hosted
     version: "6.0.2"
   pin_code_fields:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: pin_code_fields
       sha256: "4c0db7fbc889e622e7c71ea54b9ee624bb70c7365b532abea0271b17ea75b729"
@@ -345,7 +345,7 @@ packages:
     source: sdk
     version: "0.0.99"
   smooth_page_indicator:
-    dependency: "direct dev"
+    dependency: "direct main"
     description:
       name: smooth_page_indicator
       sha256: "725bc638d5e79df0c84658e1291449996943f93bacbc2cec49963dbbab48d8ae"

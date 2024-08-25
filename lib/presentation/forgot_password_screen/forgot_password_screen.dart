@@ -67,7 +67,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                   SizedBox(height: 39.v),
                   CustomElevatedButton(
                     text: "Send",
-                    onPressed: () => Navigator.pushNamed(context, AppRoutes.verificationCodeScreen),
+                    onPressed: () => Navigator.pushNamed(context, AppRoutes.verificationCodeScreen,arguments: []),
                   ),
                   SizedBox(height: 39.v),
                 ],
